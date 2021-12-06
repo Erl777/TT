@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+@import url('https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css');
 
 #app {
   width: 100%;
@@ -23,7 +25,24 @@ h2 {
   line-height: 28px;
 }
 
-.form__input .v-input__slot {
-  min-height: 54px !important;
-  padding: 0 15px !important;
+img {
+  pointer-events: none;
+}
+
+.yellow-btn {
+  display: block;
+  width: 148px;
+  height: 50px;
+  border-radius: 80px;
+  background-color: #F4E041;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  &--center {
+    margin: auto;
+  }
+  &.disabled {
+    background-color: #B4B4B4;
+    color: #fff;
+  }
 }

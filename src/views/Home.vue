@@ -98,6 +98,7 @@
         Your personal data is stored according to the Privacy Policy
       </h2>
       <form-register />
+      <img class="feedback__img" src="/img/Footprint-467x177.svg" alt="">
     </section>
   </main>
 </template>
@@ -144,20 +145,6 @@ export default {
     &__description {
       max-width: 527px;
       margin: 0 0 25px 0;
-    }
-  }
-
-  .yellow-btn {
-    display: block;
-    width: 148px;
-    height: 50px;
-    border-radius: 80px;
-    background-color: #F4E041;
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    &--center {
-      margin: auto;
     }
   }
 
@@ -228,6 +215,8 @@ export default {
   }
 
   .feedback {
+    position: relative;
+    padding-bottom: 180px;
     &__title {
       text-align: center;
       margin: 0 0 10px 0;
@@ -236,11 +225,11 @@ export default {
       text-align: center;
       margin: 0 0 32px 0;
     }
-  }
-
-  .form {
-    max-width: 380px;
-    margin: 0 auto;
+    &__img {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
   }
 
 </style>

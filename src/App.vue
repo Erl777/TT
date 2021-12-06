@@ -77,7 +77,6 @@ export default {
     }
   }
   .footer {
-    display: none;
     &__content {
       display: flex;
       align-items: center;
