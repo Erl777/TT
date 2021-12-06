@@ -22,3 +22,8 @@ h2 {
   font-size: 22px;
   line-height: 28px;
 }
+
+.form__input .v-input__slot {
+  min-height: 54px !important;
+  padding: 0 15px !important;
+}

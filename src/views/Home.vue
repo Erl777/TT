@@ -90,12 +90,26 @@
       </div>
       <button class="yellow-btn yellow-btn--center">Show more</button>
     </section>
+    <section class="feedback">
+      <h1 class="feedback__title">
+        Register to get a work
+      </h1>
+      <h2 class="feedback__subtitle">
+        Your personal data is stored according to the Privacy Policy
+      </h2>
+      <form-register />
+    </section>
   </main>
 </template>
 
 <script>
+import formRegister from '../components/formRegister'
+
 export default {
   name: 'Home',
+  components: {
+    formRegister
+  },
   props: {
 
   }
@@ -110,6 +124,7 @@ export default {
   .container {
     padding: 0 60px;
     margin-bottom: 175px;
+    max-width: 100%;
   }
   .introduction {
     height: 650px;
@@ -211,4 +226,21 @@ export default {
       margin: 0;
     }
   }
+
+  .feedback {
+    &__title {
+      text-align: center;
+      margin: 0 0 10px 0;
+    }
+    &__subtitle {
+      text-align: center;
+      margin: 0 0 32px 0;
+    }
+  }
+
+  .form {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
 </style>

@@ -23,8 +23,13 @@
       </nav>
     </header>
     <Home />
-    <footer>
+    <footer class="footer">
+      <div class="footer__content">
+        <span>© abz.agency specially for the test task</span>
+      </div>
+      <div class="footer__underline">
 
+      </div>
     </footer>
   </div>
 </template>
@@ -69,6 +74,21 @@ export default {
       color: #000;
       white-space: nowrap;
       // 489
+    }
+  }
+  .footer {
+    display: none;
+    &__content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 57px;
+      background-color: #fff;
+      text-align: center;
+    }
+    &__underline {
+      height: 40px;
+      background-color: #000;
     }
   }
 </style>
