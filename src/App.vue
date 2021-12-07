@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Header />
-    <Home />
+    <v-app>
+      <Home />
+    </v-app>
     <Footer />
   </div>
 </template>

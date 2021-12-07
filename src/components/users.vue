@@ -7,8 +7,11 @@
       The best specialists are shown below
     </h2>
     <div class="cards">
-      <div v-for="user in users" class="card">
-        <img :src="user.photo" alt="" class="card__img">
+      <div v-for="user in users"
+           :key="'user' + user.id"
+           class="card"
+      >
+        <img :src="user.photo" alt="" class="card__img" onerror="this.onerror=null;this.src='/img/Photo-cover.svg';">
         <h2 class="card__title">
           {{ user.name }}
         </h2>
@@ -43,7 +46,6 @@ export default {
       this.$http
           .get(`https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${this.page}&count=${this.count}`)
           .then((res) => {
-            console.log(res)
             if(!this.total_pages) this.total_pages = res.data.total_pages
             this.users = [...this.users, ...res.data.users];
             this.page++
