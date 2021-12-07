@@ -10,9 +10,13 @@
   line-height: 26px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  background-color: #E5E5E5;
+  background-color: #F8F8F8;
 }
 
 h1 {
@@ -30,7 +34,9 @@ img {
 }
 
 .yellow-btn {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 148px;
   height: 50px;
   border-radius: 80px;
@@ -38,11 +44,17 @@ img {
   font-family: 'Nunito', sans-serif;
   font-size: 16px;
   font-weight: 400;
+  text-decoration: none;
+  color: #000;
+  &:hover {
+    background-color: #FFE302;
+  }
   &--center {
     margin: auto;
   }
   &.disabled {
     background-color: #B4B4B4;
     color: #fff;
+    pointer-events: none;
   }
 }

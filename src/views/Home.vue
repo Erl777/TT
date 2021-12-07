@@ -8,7 +8,9 @@
         programming languages and specific frameworks are the must-have skillsets
         to look for when assessing your front-end developers.
       </p>
-      <button class="yellow-btn">Sign up</button>
+      <a class="yellow-btn" href="#registration">
+        Sign up
+      </a>
     </section>
     <section class="container acquaintance">
       <img src="/img/Image-387x340.svg" alt="">
@@ -25,7 +27,9 @@
           web interfaces with accessibility in mind. They should also be excited to learn,
           as the world of Front-End Development keeps evolving.
         </p>
-        <button class="yellow-btn">Sign up</button>
+        <a class="yellow-btn" href="#registration">
+          Sign up
+        </a>
       </div>
     </section>
     <section class="container users">
@@ -90,15 +94,15 @@
       </div>
       <button class="yellow-btn yellow-btn--center">Show more</button>
     </section>
-    <section class="feedback">
-      <h1 class="feedback__title">
+    <section id="registration" class="registration">
+      <h1 class="registration__title">
         Register to get a work
       </h1>
-      <h2 class="feedback__subtitle">
+      <h2 class="registration__subtitle">
         Your personal data is stored according to the Privacy Policy
       </h2>
       <form-register />
-      <img class="feedback__img" src="/img/Footprint-467x177.svg" alt="">
+      <img class="registration__img" src="/img/Footprint-467x177.svg" alt="">
     </section>
   </main>
 </template>
@@ -214,7 +218,7 @@ export default {
     }
   }
 
-  .feedback {
+  .registration {
     position: relative;
     padding-bottom: 180px;
     &__title {

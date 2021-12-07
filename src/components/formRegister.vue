@@ -1,5 +1,5 @@
 <template>
-  <form class="form">
+  <form class="form" @submit.prevent="">
     <div>
       <v-text-field
           class="form__input"
