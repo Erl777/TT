@@ -2,14 +2,34 @@
   <form class="form" @submit.prevent="">
     <div>
       <v-text-field
-          :ref="input.value"
+          ref="name"
           class="form__input"
-          v-for="input in inputs"
-          v-model="formData[input.value]"
-          :label="input.label"
-          :placeholder="input.placeholder"
-          :rules="input.rules"
+          v-model="formData.name"
+          label="Your name"
+          placeholder="Enter your name"
+          validate-on-blur
+          :rules="[() => !!this.formData.name || 'This field is required']"
           outlined
+      ></v-text-field>
+      <v-text-field
+              ref="email"
+              class="form__input"
+              v-model="formData.email"
+              label="Email"
+              placeholder="Enter your email"
+              validate-on-blur
+              :rules="[this.checkEmail]"
+              outlined
+      ></v-text-field>
+      <v-text-field
+              ref="phone"
+              class="form__input"
+              v-model="formData.phone"
+              label="Phone"
+              placeholder="Enter your phone number"
+              validate-on-blur
+              :rules="[() => !!this.formData.phone || 'This field is required', checkPhone]"
+              outlined
       ></v-text-field>
     </div>
     <p class="form__subtitle">Select your position</p>
@@ -36,7 +56,12 @@
         :rules="[() => !!formData.photo || 'Add a photo']"
     >
     </v-file-input>
-    <button class="yellow-btn yellow-btn--center disabled">Sign up</button>
+    <button
+        class="yellow-btn yellow-btn--center "
+        :class="{ disabled: formValid }"
+    >
+      Sign up
+    </button>
   </form>
 </template>
 
@@ -53,41 +78,18 @@ export default {
         photo: null
       },
 
-      inputs: [
-        {
-          value: 'name',
-          label: 'Your name',
-          placeholder: 'Enter your name',
-          rules: [() => !!this.formData.name || 'This field is required']
-        },
-        {
-          value: 'email',
-          label: 'Email',
-          placeholder: 'Enter your email',
-          rules: [this.checkEmail]
-        },
-        {
-          value: 'phone',
-          label: 'Phone',
-          placeholder: 'Enter your phone number',
-          rules: [() => !!this.formData.name || 'This field is required', this.checkPhone]
-        }
-      ],
       radios: []
     }
   },
   computed: {
-    formIsValide() {
-      let formHasErrors = false
-
-      Object.values(this.$refs).forEach(f => {
-        console.log(f)
-        //if (!this.formData[f]) formHasErrors = true
-
-        //this.$refs[f].validate(true)
-      })
-      return formHasErrors
-    }
+    // formValid() { deep watch !!!
+    //   const refs = Object.values(this.$refs);
+    //   const result = refs.reduce((accum, ref) => {
+    //     if(ref.valid) accum.push(ref.valid);
+    //     return accum
+    //   }, []);
+    //   return result.length === refs.length
+    // }
   },
   created() {
     this.getPositions()
