@@ -32,68 +32,7 @@
         </a>
       </div>
     </section>
-    <section class="container users">
-      <h1 class="users__title">
-        Our cheerful users
-      </h1>
-      <h2 class="users__subtitle">
-        The best specialists are shown below
-      </h2>
-      <div class="cards">
-        <div class="card">
-          <img src="/img/Photo-cover.svg" alt="" class="card__img">
-          <h2 class="card__title">
-            Salvador Stewart Flynn Thomas Salva...
-          </h2>
-          <p class="card__position">
-            Leading specialist of the department of control over
-          </p>
-          <p class="card__email">
-            JeromeKlarkaJeromeKlarka@...
-          </p>
-          <p class="card__number">
-            +38 (098) 278 76 24
-          </p>
-        </div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card">
-          <img src="/img/Photo-cover.svg" alt="" class="card__img">
-          <h2 class="card__title">
-            Alexandre
-          </h2>
-          <p class="card__position">
-            Lead Independent Director
-          </p>
-          <p class="card__email">
-            Alexandr_develop@gmail.com
-          </p>
-          <p class="card__number">
-            +38 (098) 198 44 24
-          </p>
-        </div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card">
-          <img src="/img/Photo-cover.svg" alt="" class="card__img">
-          <h2 class="card__title">
-            Oliver
-          </h2>
-          <p class="card__position">
-            VP, Global IT Operations
-          </p>
-          <p class="card__email">
-            Oliver_develop@gmail.com
-          </p>
-          <p class="card__number">
-            +38 (098) 039 44 87
-          </p>
-        </div>
-        <div class="card"></div>
-        <div class="card"></div>
-      </div>
-      <button class="yellow-btn yellow-btn--center">Show more</button>
-    </section>
+    <users />
     <section id="registration" class="registration">
       <h1 class="registration__title">
         Register to get a work
@@ -109,11 +48,12 @@
 
 <script>
 import formRegister from '../components/formRegister'
+import users from "../components/users";
 
 export default {
   name: 'Home',
   components: {
-    formRegister
+    formRegister, users
   },
   props: {
 
@@ -175,48 +115,8 @@ export default {
     }
   }
 
-  .users {
-    &__title {
-      text-align: center;
-      margin: 0 0 10px 0;
-    }
-    &__subtitle {
-      text-align: center;
-      margin: 0 0 32px 0;
-    }
-  }
 
-  .cards {
-    display: grid;
-    grid-gap: 29px;
-    grid-template-columns: repeat(3, 282px);
-    grid-template-rows: repeat(auto-fill, 313px);
-    margin-bottom: 50px;
-  }
 
-  .card {
-    max-width: 282px;
-    height: 313px;
-    max-height: 313px;
-    display: flex;
-    flex-direction: column;
-    padding: 36px 30px 0;
-    align-items: center;
-    background: #FFFFFF;
-    border-radius: 10px;
-    text-align: center;
-    box-sizing: border-box;
-    &__img {
-      border-radius: 50%;
-      margin-bottom: 15px;
-    }
-    &__title {
-      margin: 0 0 4px 0;
-    }
-    &__position, &__email, &__number {
-      margin: 0;
-    }
-  }
 
   .registration {
     position: relative;
