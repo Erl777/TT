@@ -2,41 +2,38 @@
   <form class="form" @submit.prevent="">
     <div>
       <v-text-field
-          ref="name"
           class="form__input"
-          v-model="formData.name"
+          v-model="name"
           label="Your name"
           placeholder="Enter your name"
-          validate-on-blur
-          :rules="[() => !!this.formData.name || 'This field is required']"
+          :error-messages="nameErrors"
           outlined
+          @blur="$v.name.$touch()"
       ></v-text-field>
       <v-text-field
-              ref="email"
               class="form__input"
-              v-model="formData.email"
+              v-model="email"
               label="Email"
               placeholder="Enter your email"
               validate-on-blur
-              :rules="[this.checkEmail]"
+              :error-messages="emailErrors"
               outlined
+              @blur="$v.email.$touch()"
       ></v-text-field>
       <v-text-field
-              ref="phone"
               class="form__input"
-              v-model="formData.phone"
+              v-model="phone"
               label="Phone"
               placeholder="Enter your phone number"
               validate-on-blur
-              :rules="[() => !!this.formData.phone || 'This field is required', checkPhone]"
+              :error-messages="phoneErrors"
               outlined
+              @blur="$v.phone.$touch()"
       ></v-text-field>
     </div>
     <p class="form__subtitle">Select your position</p>
     <v-radio-group
-        ref="radio"
-        v-model="formData.radio"
-        :rules="[() => !!formData.radio || 'Choose something']"
+        v-model="position"
     >
       <v-radio
           class="form__radio"
@@ -47,18 +44,18 @@
       ></v-radio>
     </v-radio-group>
     <v-file-input
-        ref="photo"
-        v-model="formData.photo"
+        v-model="photo"
         class="form__file-input"
         color="deep-purple accent-4"
         placeholder="Upload your photo"
         outlined
-        :rules="[() => !!formData.photo || 'Add a photo']"
+        :error-messages="photoErrors"
+        @blur="$v.phone.$touch()"
     >
     </v-file-input>
     <button
         class="yellow-btn yellow-btn--center "
-        :class="{ disabled: formValid }"
+        :class="{ disabled: formInvalid }"
     >
       Sign up
     </button>
@@ -66,30 +63,61 @@
 </template>
 
 <script>
+const phoneValidation = (value) => /^[\+]{0,1}380([0-9]{9})$/.test(value)
+const { validationMixin, default: Vuelidate } = require('vuelidate')
+const { required, maxLength, email, minLength } = require('vuelidate/lib/validators')
 export default {
   name: "formRegister",
+  mixins: [validationMixin],
   data() {
     return {
-      formData: {
-        name: '',
-        email: '',
-        phone: '',
-        radio: null,
-        photo: null
-      },
-
+      name: '',
+      email: '',
+      phone: '',
+      position: null,
+      photo: null,
       radios: []
     }
   },
+  validations: {
+    name: { required, maxLength: maxLength(60), minLength: minLength(2) },
+    email: { required, email },
+    phone: { required, phoneValidation },
+    position: { required },
+    photo: { required },
+  },
   computed: {
-    // formValid() { deep watch !!!
-    //   const refs = Object.values(this.$refs);
-    //   const result = refs.reduce((accum, ref) => {
-    //     if(ref.valid) accum.push(ref.valid);
-    //     return accum
-    //   }, []);
-    //   return result.length === refs.length
-    // }
+    formInvalid() {
+      return this.$v.$invalid
+    },
+    nameErrors () {
+      const errors = []
+      if (!this.$v.name.$dirty) return errors
+      !this.$v.name.maxLength && errors.push('Name must be at most 60 characters long')
+      !this.$v.name.minLength && errors.push('Name must be more than 2 characters long')
+      !this.$v.name.required && errors.push('Name is required.')
+      return errors
+    },
+    emailErrors () {
+      const errors = []
+      if (!this.$v.email.$dirty) return errors
+      !this.$v.email.email && errors.push('Must be valid e-mail')
+      !this.$v.email.required && errors.push('E-mail is required')
+      return errors
+    },
+    phoneErrors () {
+      const errors = []
+      if (!this.$v.phone.$dirty) return errors
+      !this.$v.phone.required && errors.push('E-mail is required')
+      !this.$v.phone.phoneValidation && errors.push('Must be valid phone number start with +380')
+      return errors
+    },
+    photoErrors () {
+      const errors = []
+      if (!this.$v.photo.$dirty) return errors
+      !this.$v.photo.required && errors.push('Photo is required')
+      return errors
+    }
   },
   created() {
     this.getPositions()
@@ -101,14 +129,6 @@ export default {
           .then((res) => {
             this.radios = Object.assign([], res.data.positions)
           });
-    },
-    checkEmail() {
-      const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return pattern.test(this.formData.email) || 'Invalid e-mail.'
-    },
-    checkPhone() {
-      const pattern = /^[\+]{0,1}380([0-9]{9})$/
-      return pattern.test(this.formData.phone) || 'Invalid phone number.'
     }
   }
 }
