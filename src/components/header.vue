@@ -33,26 +33,32 @@ export default {
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
-    padding: 0 60px;
+    padding: 0 44px 0 60px;
     box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.15), 0px 4px 15px rgba(0, 0, 0, 0.15);
-  }
-  .nav {
-    width: 53.65%;
   }
   .menu {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     margin: 0;
     padding: 0;
     list-style-type: none;
-  &__item:not(:last-child) {
-     margin-right: 30px;
-   }
-  &__link {
-     text-decoration: none;
-     color: #000;
-     white-space: nowrap;
-   }
+
+    &__item {
+      padding: 7px 15px;
+      transition: .3s ease-in-out;
+      border-radius: 4px;
+      &:hover {
+        background-color: #00BDD31A;
+        .menu__link {
+          color: #00BDD3;
+        }
+      }
+    }
+    &__link {
+      text-decoration: none;
+      color: #000;
+      white-space: nowrap;
+      transition: .3s ease-in-out;
+    }
   }
 </style>

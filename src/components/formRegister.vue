@@ -59,9 +59,29 @@
     <button
         class="yellow-btn yellow-btn--center "
         :class="{ disabled: formInvalid }"
+        @click="createUser"
     >
       Sign up
     </button>
+    <Modal
+        v-if="success"
+        @close="success = false"
+    >
+      <slot>
+        <h2 class="modal__title">
+          Congratulations
+        </h2>
+        <p class="modal__description">
+          You have successfully passed the registration
+        </p>
+        <button
+            class="yellow-btn"
+            @click="success = false"
+        >
+          Great
+        </button>
+      </slot>
+    </Modal>
   </form>
 </template>
 
@@ -69,9 +89,11 @@
 const phoneValidation = (value) => /^[\+]{0,1}380([0-9]{9})$/.test(value)
 const { validationMixin, default: Vuelidate } = require('vuelidate')
 const { required, maxLength, email, minLength } = require('vuelidate/lib/validators')
+import Modal from "./modal";
 export default {
   name: "formRegister",
   mixins: [validationMixin],
+  components: {Modal},
   data() {
     return {
       name: '',
@@ -79,7 +101,8 @@ export default {
       phone: '',
       position: null,
       photo: null,
-      radios: []
+      radios: [],
+      success: false
     }
   },
   validations: {
@@ -131,6 +154,37 @@ export default {
           .get(`https://frontend-test-assignment-api.abz.agency/api/v1/positions`)
           .then((res) => {
             this.radios = Object.assign([], res.data.positions)
+          });
+    },
+    async createUser(){
+      const token = await this.getToken();
+      let config = {
+        headers: {
+          Token: token
+        }
+      }
+      let payload = {
+        name: this.name,
+        email: this.email,
+        phone: this.phone,
+        position_id: this.position,
+        photo: this.photo
+      };
+      this.$http
+          .post(`https://frontend-test-assignment-api.abz.agency/api/v1/users`, payload, config)
+          .then((res) => {
+            console.log(res)
+            this.success = true
+          }).catch((err) => {
+            throw new Error(err)
+      });
+
+    },
+    getToken(){
+      return this.$http
+          .get(`https://frontend-test-assignment-api.abz.agency/api/v1/token`)
+          .then((res) => {
+            return res.data.token
           });
     }
   }
