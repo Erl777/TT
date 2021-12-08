@@ -8,6 +8,7 @@
           placeholder="Enter your name"
           :error-messages="nameErrors"
           outlined
+          color="#00BDD3"
           @blur="$v.name.$touch()"
       ></v-text-field>
       <v-text-field
@@ -18,6 +19,7 @@
               validate-on-blur
               :error-messages="emailErrors"
               outlined
+              color="#00BDD3"
               @blur="$v.email.$touch()"
       ></v-text-field>
       <v-text-field
@@ -28,6 +30,7 @@
               validate-on-blur
               :error-messages="phoneErrors"
               outlined
+              color="#00BDD3"
               @blur="$v.phone.$touch()"
       ></v-text-field>
     </div>
@@ -37,20 +40,20 @@
     >
       <v-radio
           class="form__radio"
-          color="primary"
           v-for="radio in radios"
           :label="radio.name"
           :value="radio.id"
+          color="#00BDD3"
       ></v-radio>
     </v-radio-group>
     <v-file-input
         v-model="photo"
         class="form__file-input"
-        color="deep-purple accent-4"
         placeholder="Upload your photo"
         outlined
+        color="#000"
         :error-messages="photoErrors"
-        @blur="$v.phone.$touch()"
+        @blur="$v.photo.$touch()"
     >
     </v-file-input>
     <button
@@ -196,11 +199,19 @@ export default {
       border: 1px solid rgba(0, 0, 0, 0.87);
       box-sizing: border-box;
       border-radius: 4px 0 0 4px;
+      color: #000;
     }
   }
 
   .form .form__file-input {
     margin-bottom: 20px !important;
+    &.error--text {
+      .v-input__control {
+        &::before {
+          border: 2px solid #ff5252;
+        }
+      }
+    }
   }
 
 </style>
