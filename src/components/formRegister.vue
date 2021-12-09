@@ -156,28 +156,29 @@ export default {
             this.radios = Object.assign([], res.data.positions)
           });
     },
-    async createUser(){
+    async createUser() {
       const token = await this.getToken();
-      let config = {
-        headers: {
-          Token: token
+      const config = {
+          headers: {
+            Token: token
+          }
         }
-      }
-      let payload = {
-        name: this.name,
-        email: this.email,
-        phone: this.phone,
-        position_id: this.position,
-        photo: this.photo
-      };
+      let payload = new FormData();
+      payload.append('position_id', this.position);
+      payload.append('name', this.name);
+      payload.append('email', this.email);
+      payload.append('phone', this.phone);
+      payload.append('photo', this.photo);
       this.$http
           .post(`https://frontend-test-assignment-api.abz.agency/api/v1/users`, payload, config)
           .then((res) => {
             console.log(res)
             this.success = true
+            // clear form
+            this.$nextTick(() => { this.$v.$reset() })
           }).catch((err) => {
             throw new Error(err)
-      });
+          });
 
     },
     getToken(){
@@ -201,16 +202,13 @@ export default {
         margin-bottom: 13px !important;
       }
     }
-    &__subtitle {
+    & &__subtitle {
       margin-bottom: 11px;
     }
     &__radio {
       margin-bottom: 9px !important;
       .v-input--selection-controls__input {
         left: -2px;
-      }
-      label {
-        margin-left: 8px;
       }
     }
   }

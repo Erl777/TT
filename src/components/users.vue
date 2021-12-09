@@ -1,5 +1,5 @@
 <template>
-  <section class="container users">
+  <section class="custom-container users">
     <h1 class="users__title">
       Our cheerful users
     </h1>
@@ -73,13 +73,15 @@ export default {
   .cards {
     display: grid;
     grid-gap: 29px;
-    grid-template-columns: repeat(3, 282px);
+    grid-template-columns: repeat(3, minmax(282px, 370px));
     grid-template-rows: repeat(auto-fill, 313px);
     margin-bottom: 50px;
+    @media (min-width: 1024px) {
+      grid-gap: 30px;
+    }
   }
 
   .card {
-    max-width: 282px;
     height: 313px;
     max-height: 313px;
     display: flex;

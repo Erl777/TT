@@ -1,13 +1,15 @@
 <template>
   <header class="header">
-    <img src="/img/Logo.svg" class="logo__img" alt="">
-    <nav class="nav">
-      <ul class="menu">
-        <li v-for="item in items" class="menu__item">
-          <a href="#registration" class="menu__link">{{ item }}</a>
-        </li>
-      </ul>
-    </nav>
+    <div class="custom-container">
+      <img src="/img/Logo.svg" class="logo__img" alt="">
+      <nav class="nav">
+        <ul class="menu">
+          <li v-for="item in items" class="menu__item">
+            <a href="#registration" class="menu__link">{{ item }}</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 </template>
 
@@ -24,16 +26,20 @@ export default {
 
 <style scoped lang="scss">
   .header {
-  //position: sticky;
-  //top: 0;
-  //left: 0;
-  //z-index: 1;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    .custom-container {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 44px 0 60px;
+      margin-bottom: 0;
+    }
     height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     background-color: #fff;
-    padding: 0 44px 0 60px;
     box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.15), 0px 4px 15px rgba(0, 0, 0, 0.15);
   }
   .menu {

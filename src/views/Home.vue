@@ -1,18 +1,20 @@
 <template>
   <main>
-    <section class="container introduction">
-      <h1 class="introduction__title"> Test assignment for front-end developers </h1>
-      <p class="introduction__description">
-        Front-end developers make sure the user sees and interacts with all
-        the necessary elements to ensure conversion. Therefore, responsive design,
-        programming languages and specific frameworks are the must-have skillsets
-        to look for when assessing your front-end developers.
-      </p>
-      <a class="yellow-btn" href="#registration">
-        Sign up
-      </a>
+    <section class="introduction">
+      <div class="custom-container">
+        <h1 class="introduction__title"> Test assignment for front-end developers </h1>
+        <p class="introduction__description">
+          Front-end developers make sure the user sees and interacts with all
+          the necessary elements to ensure conversion. Therefore, responsive design,
+          programming languages and specific frameworks are the must-have skillsets
+          to look for when assessing your front-end developers.
+        </p>
+        <a class="yellow-btn" href="#registration">
+          Sign up
+        </a>
+      </div>
     </section>
-    <section class="container acquaintance">
+    <section class="custom-container acquaintance">
       <img src="/img/Image-387x340.svg" alt="">
       <div class="acquaintance__content">
         <h1 class="acquaintance__title">
@@ -41,7 +43,11 @@
         Your personal data is stored according to the Privacy Policy
       </h2>
       <form-register />
-      <img class="registration__img" src="/img/Footprint-467x177.svg" alt="">
+
+      <picture>
+        <source media="(min-width:1400px)" class="registration__img" srcset="/img/Footprint-972x177.svg">
+        <img class="registration__img" src="/img/Footprint-467x177.svg" alt="">
+      </picture>
     </section>
   </main>
 </template>
@@ -61,32 +67,44 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-  header, footer, main {
-    max-width: 1400px;
-    margin: 0 auto;
+<style lang="scss">
+  main {
+    width: 100%;
   }
-  .container {
+  section {
+    &:not(:last-child) {
+      margin-bottom: 175px !important;
+    }
+  }
+  .custom-container {
     padding: 0 60px;
-    margin-bottom: 175px;
+    margin: 0 auto;
     max-width: 100%;
+    @media (min-width: 1280px) {
+      max-width: 1400px;
+      padding: 0 110px;
+    }
   }
   .introduction {
     height: 650px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 60px;
-    background-image: url("/img/Banner_photo.jpg");
-    background-size: cover;
-    background-position: center;
+    background-color: #EDECEA;
+    .custom-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      //padding-left: 60px;
+      background-image: url("/img/Banner_photo.jpg");
+      background-size: cover;
+      background-position: center;
+    }
     //margin-bottom: 175px;
     &__title {
       width: 100%;
       max-width: 670px;
       margin: 0 0 20px 0;
     }
-    &__description {
+    & &__description {
       max-width: 527px;
       margin: 0 0 25px 0;
     }
@@ -115,9 +133,6 @@ export default {
     }
   }
 
-
-
-
   .registration {
     position: relative;
     padding-bottom: 180px;
@@ -133,6 +148,9 @@ export default {
       position: absolute;
       right: 0;
       bottom: 0;
+      @media (min-width: 1400px) {
+        right: 205px;
+      }
     }
   }
 

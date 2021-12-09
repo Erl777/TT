@@ -1,6 +1,6 @@
 <template>
   <div class="overlay" @click="$emit('close')">
-    <div class="modal">
+    <div class="modal" @click.stop="">
       <slot />
     </div>
   </div>
