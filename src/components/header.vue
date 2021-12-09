@@ -8,7 +8,9 @@
             <a href="#registration" class="menu__link">{{ item }}</a>
           </li>
         </ul>
-        <img class="burger" src="/img/Menu.svg">
+        <button @click="$emit('openMenu')">
+          <img class="burger" src="/img/Menu.svg">
+        </button>
       </nav>
     </div>
   </header>
