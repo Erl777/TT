@@ -17,8 +17,8 @@
     <section class="custom-container acquaintance">
 <!--      <img src="/img/Image-387x340.svg" alt="">-->
       <picture>
-        <source media="(max-width:768px)" srcset="/img/Image-328x287.svg">
-        <img src="/img/Image-387x340.svg" alt="">
+        <source media="(max-width:768px)" class="acquaintance__img" srcset="/img/Image-296x260.svg">
+        <img class="acquaintance__img" src="/img/Image-387x340.svg" alt="">
       </picture>
       <div class="acquaintance__content">
         <h1 class="acquaintance__title">
@@ -103,12 +103,10 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      //padding-left: 60px;
       background-image: url("/img/Banner_photo.jpg");
       background-size: cover;
       background-position: center;
     }
-    //margin-bottom: 175px;
     &__title {
       width: 100%;
       max-width: 670px;
@@ -130,12 +128,14 @@ export default {
     display: flex;
     justify-content: space-between;
     text-align: right;
-    //margin-bottom: 175px;
     &__content {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       padding-top: 16px;
+      @media (max-width: 768px) {
+        padding-top: 0;
+      }
     }
     &__title {
       margin: 0 0 10px 0;
@@ -143,11 +143,19 @@ export default {
     &__subtitle {
       margin: 0 0 19px 0;
     }
+    &__img {
+      @media (max-width: 768px) {
+        margin-top: 50px;
+      }
+    }
     & &__description {
       max-width: 477px;
       margin: 0 0 32px 0;
       @media (min-width: 1400px) {
         max-width: 680px;
+      }
+      @media (max-width: 768px) {
+        max-width: 368px;
       }
     }
   }
