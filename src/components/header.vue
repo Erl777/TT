@@ -8,6 +8,7 @@
             <a href="#registration" class="menu__link">{{ item }}</a>
           </li>
         </ul>
+        <img class="burger" src="/img/Menu.svg">
       </nav>
     </div>
   </header>
@@ -30,6 +31,10 @@ export default {
     top: 0;
     left: 0;
     z-index: 1;
+    height: 60px;
+    background-color: #fff;
+    box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.15), 0px 4px 15px rgba(0, 0, 0, 0.15);
+
     .custom-container {
       height: 60px;
       display: flex;
@@ -37,10 +42,10 @@ export default {
       justify-content: space-between;
       padding: 0 44px 0 60px;
       margin-bottom: 0;
+      @media (max-width: 768px) {
+        padding: 0 18px 0 32px;
+      }
     }
-    height: 60px;
-    background-color: #fff;
-    box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.15), 0px 4px 15px rgba(0, 0, 0, 0.15);
   }
   .menu {
     display: flex;
@@ -48,6 +53,9 @@ export default {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    @media (max-width: 768px) {
+      display: none;
+    }
 
     &__item {
       padding: 7px 15px;
@@ -65,6 +73,12 @@ export default {
       color: #000;
       white-space: nowrap;
       transition: .3s ease-in-out;
+    }
+  }
+  .burger {
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
     }
   }
 </style>

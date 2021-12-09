@@ -15,7 +15,11 @@
       </div>
     </section>
     <section class="custom-container acquaintance">
-      <img src="/img/Image-387x340.svg" alt="">
+<!--      <img src="/img/Image-387x340.svg" alt="">-->
+      <picture>
+        <source media="(max-width:768px)" srcset="/img/Image-328x287.svg">
+        <img src="/img/Image-387x340.svg" alt="">
+      </picture>
       <div class="acquaintance__content">
         <h1 class="acquaintance__title">
           Let's get acquainted
@@ -84,10 +88,16 @@ export default {
       max-width: 1400px;
       padding: 0 110px;
     }
+    @media (max-width: 992px) {
+      padding: 0 32px;
+    }
   }
   .introduction {
     height: 650px;
     background-color: #EDECEA;
+    @media (max-width: 768px) {
+      height: 500px;
+    }
     .custom-container {
       height: 100%;
       display: flex;
@@ -103,10 +113,16 @@ export default {
       width: 100%;
       max-width: 670px;
       margin: 0 0 20px 0;
+      @media (max-width: 768px) {
+        max-width: 410px;
+      }
     }
     & &__description {
       max-width: 527px;
       margin: 0 0 25px 0;
+      @media (max-width: 768px) {
+        max-width: 424px;
+      }
     }
   }
 
@@ -127,9 +143,12 @@ export default {
     &__subtitle {
       margin: 0 0 19px 0;
     }
-    &__description {
+    & &__description {
       max-width: 477px;
       margin: 0 0 32px 0;
+      @media (min-width: 1400px) {
+        max-width: 680px;
+      }
     }
   }
 
@@ -142,7 +161,7 @@ export default {
     }
     &__subtitle {
       text-align: center;
-      margin: 0 0 32px 0;
+      margin: 0 0 30px 0;
     }
     &__img {
       position: absolute;

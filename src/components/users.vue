@@ -79,6 +79,14 @@ export default {
     @media (min-width: 1024px) {
       grid-gap: 30px;
     }
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, minmax(282px, 1fr));
+      grid-gap: 16px;
+    }
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, minmax(282px, 344px));
+      grid-gap: 16px;
+    }
   }
 
   .card {
