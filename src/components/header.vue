@@ -8,8 +8,8 @@
             <a href="#registration" class="menu__link">{{ item }}</a>
           </li>
         </ul>
-        <button @click="$emit('openMenu')">
-          <img class="burger" src="/img/Menu.svg">
+        <button class="burger" @click="$emit('openMenu')">
+          <img src="/img/Menu.svg">
         </button>
       </nav>
     </div>
@@ -47,6 +47,9 @@ export default {
       @media (max-width: 768px) {
         padding: 0 18px 0 32px;
       }
+      @media (max-width: 500px) {
+        padding: 0 24px 0 16px;
+      }
     }
   }
   .menu {
@@ -79,6 +82,7 @@ export default {
   }
   .burger {
     display: none;
+    height: 24px;
     @media (max-width: 768px) {
       display: block;
     }

@@ -4,10 +4,10 @@
       <div class="custom-container">
         <h1 class="introduction__title"> Test assignment for front-end developers </h1>
         <p class="introduction__description">
-          Front-end developers make sure the user sees and interacts with all
+          {{ `Front-end developers make sure the user sees and interacts with all
           the necessary elements to ensure conversion. Therefore, responsive design,
           programming languages and specific frameworks are the must-have skillsets
-          to look for when assessing your front-end developers.
+          to look for when assessing your front-end developers.` | crop(window.width)}}
         </p>
         <a class="yellow-btn" href="#registration">
           Sign up
@@ -15,7 +15,6 @@
       </div>
     </section>
     <section class="custom-container acquaintance">
-<!--      <img src="/img/Image-387x340.svg" alt="">-->
       <picture>
         <source media="(max-width:768px)" class="acquaintance__img" srcset="/img/Image-296x260.svg">
         <img class="acquaintance__img" src="/img/Image-387x340.svg" alt="">
@@ -33,7 +32,7 @@
           web interfaces with accessibility in mind. They should also be excited to learn,
           as the world of Front-End Development keeps evolving.
         </p>
-        <a class="yellow-btn" href="#registration">
+        <a class="acquaintance__btn yellow-btn" href="#registration">
           Sign up
         </a>
       </div>
@@ -50,6 +49,7 @@
 
       <picture>
         <source media="(min-width:1400px)" class="registration__img" srcset="/img/Footprint-972x177.svg">
+        <source media="(max-width:500px)" class="registration__img" srcset="/img/Footprint-328x124.svg">
         <img class="registration__img" src="/img/Footprint-467x177.svg" alt="">
       </picture>
     </section>
@@ -65,8 +65,36 @@ export default {
   components: {
     formRegister, users
   },
-  props: {
-
+  data() {
+    return {
+      window: {
+        width: 0,
+        height: 0
+      }
+    }
+  },
+  created() {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.window.width = window.innerWidth;
+      this.window.height = window.innerHeight;
+    }
+  },
+  filters: {
+    crop: (str, width) => {
+      if (width <= 650) {
+        return str.split('.')[0] + '.'
+      }
+      else {
+        return str
+      }
+    }
   }
 }
 </script>
@@ -78,6 +106,9 @@ export default {
   section {
     &:not(:last-child) {
       margin-bottom: 175px !important;
+      @media (max-width: 650px) {
+        margin-bottom: 145px !important;
+      }
     }
   }
   .custom-container {
@@ -91,12 +122,18 @@ export default {
     @media (max-width: 992px) {
       padding: 0 32px;
     }
+    @media (max-width: 650px) {
+      padding: 0 16px;
+    }
   }
   .introduction {
     height: 650px;
     background-color: #EDECEA;
     @media (max-width: 768px) {
       height: 500px;
+    }
+    @media (max-width: 360px) {
+      height: 470px;
     }
     .custom-container {
       height: 100%;
@@ -114,6 +151,9 @@ export default {
       @media (max-width: 768px) {
         max-width: 410px;
       }
+      @media (max-width: 650px) {
+        max-width: 240px;
+      }
     }
     & &__description {
       max-width: 527px;
@@ -121,6 +161,10 @@ export default {
       @media (max-width: 768px) {
         max-width: 424px;
       }
+      @media (max-width: 650px) {
+        max-width: 240px;
+      }
+
     }
   }
 
@@ -128,10 +172,12 @@ export default {
     display: flex;
     justify-content: space-between;
     text-align: right;
-    &__content {
-      display: flex;
+    @media (max-width: 650px) {
       flex-direction: column;
-      align-items: flex-end;
+      align-items: center;
+      text-align: left;
+    }
+    &__content {
       padding-top: 16px;
       @media (max-width: 768px) {
         padding-top: 0;
@@ -147,6 +193,9 @@ export default {
       @media (max-width: 768px) {
         margin-top: 50px;
       }
+      @media (max-width: 650px) {
+        margin: 0 0 40px 0;
+      }
     }
     & &__description {
       max-width: 477px;
@@ -158,11 +207,20 @@ export default {
         max-width: 368px;
       }
     }
+    &__btn {
+      margin-left: auto;
+      @media (max-width: 650px) {
+        margin: 0 auto 0 0;
+      }
+    }
   }
 
   .registration {
     position: relative;
     padding-bottom: 180px;
+    @media (max-width: 400px) {
+      padding: 0 16px 150px;
+    }
     &__title {
       text-align: center;
       margin: 0 0 10px 0;
