@@ -20,12 +20,14 @@
                     <p class="card__position">
                         {{ user.position }}
                     </p>
-                    <p class="card__email">
-                        {{ user.email }}
-                    </p>
-                    <p class="card__number">
-                        {{ user.phone }}
-                    </p>
+                    <v-tooltip bottom content-class="tooltip" nudge-right="50%">
+                        <template v-slot:activator="{ on, attrs }">
+                            <a v-bind="attrs"
+                               v-on="on" class="card__email" :href='"mailto:" + user.email'>{{ user.email }}</a>
+                        </template>
+                        <span>{{ user.email }}</span>
+                    </v-tooltip>
+                    <a :href='"tel:" + user.phone ' class="card__number"> {{ user.phone }} </a>
                 </div>
             </div>
             <slot name="afterCards" />
@@ -102,6 +104,7 @@
         border-radius: 10px;
         text-align: center;
         box-sizing: border-box;
+        color: #000;
 
         &__img {
             min-height: 70px;
@@ -130,11 +133,22 @@
             max-width: 100%;
             overflow: hidden;
             text-overflow: ellipsis;
+            color: #000;
+            text-decoration: none;
+        }
+
+        &__number {
+            color: #000;
+            text-decoration: none;
         }
 
         &__position, &__email, &__number {
             margin: 0;
             max-width: 100%;
         }
+    }
+    .tooltip {
+        background-color: #232F34;
+        border-radius: 4px;
     }
 </style>
