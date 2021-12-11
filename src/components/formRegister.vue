@@ -93,7 +93,7 @@ import Modal from "./modal";
 export default {
   name: "formRegister",
   mixins: [validationMixin],
-  components: {Modal},
+  components: { Modal },
   data() {
     return {
       name: '',
@@ -162,7 +162,7 @@ export default {
           headers: {
             Token: token
           }
-        }
+        };
       let payload = new FormData();
       payload.append('position_id', this.position);
       payload.append('name', this.name);
@@ -172,14 +172,21 @@ export default {
       this.$http
           .post(`https://frontend-test-assignment-api.abz.agency/api/v1/users`, payload, config)
           .then((res) => {
-            console.log(res)
-            this.success = true
-            // clear form
-            this.$nextTick(() => { this.$v.$reset() })
+            this.success = true;
+            this.clearForm();
+            this.$emit('refreshUsers')
           }).catch((err) => {
             throw new Error(err)
           });
 
+    },
+    clearForm() {
+      this.$v.$reset();
+      this.name = '';
+      this.email = '';
+      this.phone = '';
+      this.position = null;
+      this.photo = null;
     },
     getToken(){
       return this.$http
