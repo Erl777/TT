@@ -89,9 +89,9 @@
       }
     },
     async created() {
-      await this.getUsers();
       window.addEventListener('resize', this.handleResize);
       this.handleResize();
+      await this.getUsers();
     },
     destroyed() {
       window.removeEventListener('resize', this.handleResize);
@@ -100,6 +100,8 @@
       handleResize() {
         this.window.width = window.innerWidth;
         this.window.height = window.innerHeight;
+        if(this.window.width <= 768) this.count = 6;
+        if(this.window.width <= 400) this.count = 3;
       },
       getUsers() {
         this.$http
