@@ -6,7 +6,7 @@
   >
     <div class="mobile-menu" @click.stop="">
       <div class="mobile-menu__header">
-        <img src="/img/Logo.svg" class="logo__img" alt="">
+        <img src="img/Logo.svg" class="logo__img" alt="">
       </div>
       <nav class="nav">
         <ul class="list">

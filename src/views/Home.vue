@@ -16,8 +16,8 @@
         </section>
         <section class="custom-container acquaintance">
             <picture>
-                <source media="(max-width:768px)" class="acquaintance__img" srcset="/img/Image-296x260.svg">
-                <img class="acquaintance__img" src="/img/Image-387x340.svg" alt="">
+                <source media="(max-width:768px)" class="acquaintance__img" srcset="img/Image-296x260.svg">
+                <img class="acquaintance__img" src="img/Image-387x340.svg" alt="">
             </picture>
             <div class="acquaintance__content">
                 <h1 class="acquaintance__title">
@@ -58,9 +58,9 @@
             <form-register @refreshUsers="refreshUsers"/>
 
             <picture>
-                <source media="(min-width:1400px)" class="registration__img" srcset="/img/Footprint-972x177.svg">
-                <source media="(max-width:500px)" class="registration__img" srcset="/img/Footprint-328x124.svg">
-                <img class="registration__img" src="/img/Footprint-467x177.svg" alt="">
+                <source media="(min-width:1400px)" class="registration__img" srcset="img/Footprint-972x177.svg">
+                <source media="(max-width:500px)" class="registration__img" srcset="img/Footprint-328x124.svg">
+                <img class="registration__img" src="img/Footprint-467x177.svg" alt="">
             </picture>
         </section>
     </main>
@@ -180,7 +180,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-image: url("/img/Banner_photo.jpg");
+            background-image: url('/img/Banner_photo.jpg');
             background-size: cover;
             background-position: center;
             @media (min-width: 760px) and (max-width: 768px) {

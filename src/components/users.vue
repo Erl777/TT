@@ -13,7 +13,7 @@
                      class="card"
                 >
                     <img :src="user.photo" alt="" class="card__img"
-                         onerror="this.onerror=null;this.src='/img/Photo-cover.svg';">
+                         onerror="this.onerror=null;this.src='img/Photo-cover.svg';">
                     <h2 class="card__title">
                         {{ user.name }}
                     </h2>

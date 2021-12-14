@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="custom-container">
-      <img src="/img/Logo.svg" class="logo__img" alt="">
+      <img src="img/Logo.svg" class="logo__img" alt="">
       <nav class="nav">
         <ul class="menu">
           <li v-for="item in items" class="menu__item">
@@ -9,7 +9,7 @@
           </li>
         </ul>
         <button class="burger" @click="$emit('openMenu')">
-          <img src="/img/Menu.svg">
+          <img src="img/Menu.svg">
         </button>
       </nav>
     </div>
