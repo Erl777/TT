@@ -229,7 +229,9 @@
         &__subtitle {
             margin: 0 0 19px 0;
         }
-
+        picture {
+          max-height: 340px;
+        }
         &__img {
             @media (max-width: 768px) {
                 margin-top: 50px;
