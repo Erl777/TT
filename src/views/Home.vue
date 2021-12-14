@@ -141,6 +141,9 @@
             @media (max-width: 650px) {
                 margin-bottom: 145px !important;
             }
+            @media (min-width: 2500px) {
+                margin-bottom: 185px !important;
+            }
         }
     }
 
@@ -178,6 +181,9 @@
             background-image: url("/img/Banner_photo.jpg");
             background-size: cover;
             background-position: center;
+            @media (min-width: 760px) and (max-width: 768px) {
+                background-position-x: -140px;
+            }
         }
 
         &__title {
@@ -186,6 +192,7 @@
             margin: 0 0 20px 0;
             @media (max-width: 768px) {
                 max-width: 410px;
+                margin-bottom: 21px;
             }
             @media (max-width: 650px) {
                 max-width: 240px;
@@ -197,6 +204,7 @@
             margin: 0 0 25px 0;
             @media (max-width: 768px) {
                 max-width: 424px;
+                margin-bottom: 32px;
             }
             @media (max-width: 650px) {
                 max-width: 240px;
@@ -275,6 +283,9 @@
         &__subtitle {
             text-align: center;
             margin: 0 0 30px 0;
+            @media (max-width: 768px) {
+                margin-bottom: 32px;
+            }
         }
 
         &__img {
