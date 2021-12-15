@@ -1,7 +1,7 @@
 <template>
     <main>
         <section class="introduction">
-            <div class="custom-container">
+            <div class="custom-container" :style="{ backgroundImage: 'url(img/Banner_photo.jpg' }">
                 <h1 class="introduction__title"> Test assignment for front-end developers </h1>
                 <p class="introduction__description">
                     {{ `Front-end developers make sure the user sees and interacts with all
@@ -180,7 +180,6 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-image: url('/img/Banner_photo.jpg');
             background-size: cover;
             background-position: center;
             @media (min-width: 760px) and (max-width: 768px) {
